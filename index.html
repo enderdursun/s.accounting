@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Accounting</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="db.js"></script>
+    <script type="module" src="data.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body class="hp">
+    <main>
+        <div class="ac current" data-label="Current">
+            <input data-ammount-current data-type="currency" placeholder="Current money" value="">
+        </div>
+        <div class="movements-list" data-movements-list>
+            <div class="item" data-movements-item data-way="plus">
+                <span class="way"></span>
+                <input data-movement-name type="text" placeholder="Movement type" value="Test">
+                <input data-movement-value data-type="currency" placeholder="Movement value" value="1000">
+                <input data-movement-way type="number" hidden value="1">
+            </div>
+            <div class="item" data-movements-item data-way="minus">
+                <span class="way"></span>
+                <input data-movement-name type="text" placeholder="Movement type" value="Test 2">
+                <input data-movement-value data-type="currency" placeholder="Movement value" value="1500">
+                <input data-movement-way type="number" hidden value="-1">
+            </div>
+            <div class="item" data-movements-item data-way="plus">
+                <span class="way"></span>
+                <input data-movement-name type="text" placeholder="Movement type" value="Test 3">
+                <input data-movement-value data-type="currency" placeholder="Movement value" value="500">
+                <input data-movement-way type="number" hidden value="1">
+            </div>
+            <div class="item new" data-movements-item data-way="minus">
+                <span class="way"></span>
+                <input data-movement-name type="text" placeholder="Movement type">
+                <input data-movement-value data-type="currency" placeholder="Movement value">
+                <input data-movement-way type="number" hidden value="-1">
+            </div>
+        </div>
+        <div class="ac networth" data-label="Net worth">
+            <input data-ammount-nw data-type="currency" placeholder="Net worth" disabled value="18000">
+        </div>
+    </main>
+</body>
+
+</html>

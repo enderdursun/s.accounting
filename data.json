@@ -1,0 +1,9 @@
+{
+	"currentValue": 18000,
+	"listMovement": [
+		{ "name": "Test 1", "value": 1500, "isplus": 1 },
+		{ "name": "Test 2", "value": 1000, "isplus": 0 },
+		{ "name": "Test 3", "value": 500, "isplus": 1 }
+	],
+	"netWorth": 16000
+}

@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap");
+body.hp {
+	--bghome: 240;
+	--color: hsl(var(--bghome), 100%, 15%);
+	--duration: 0.5s;
+	background-color: hsl(var(--bghome), 70%, 95%);
+	color: var(--color);
+	transition: 0.4s ease-in-out;
+	transition-property: color, background-color;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	display: grid;
+	place-items: center;
+	font-family: "Xanh Mono", monospace;
+	font-size: 50px;
+	white-space: nowrap;
+	main {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		width: 50vw;
+		height: 80vh;
+	}
+	.current {
+		--td: 0.2s;
+		&:after {
+			bottom: 0;
+			--td: 0.2s;
+		}
+	}
+	.networth {
+		--td: 0.4s;
+		&:after {
+			top: 0;
+			--td: 0.4s;
+		}
+	}
+	.movements-list {
+		--td: 0.6s;
+		overflow-x: hidden;
+		overflow-y: auto;
+		padding: 2vh 20px;
+		&,
+		input {
+			::-webkit-input-placeholder {
+				color: hsla(var(--bghome), 50%, 50%, 50%);
+				text-align: left;
+			}
+
+			:-moz-placeholder {
+				text-align: left;
+			}
+		}
+		.item {
+			font-size: 30px;
+			display: grid;
+			grid-template-columns: 20px 6fr 4fr;
+			align-items: center;
+			width: 100%;
+			gap: 30px;
+			width: calc(100% - 60px);
+			height: 7vh;
+			.way {
+				position: relative;
+				background-color: hsl(var(--bghome), 100%, 92%);
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				cursor: pointer;
+				&:hover {
+					background-color: hsl(var(--bghome), 100%, 80%);
+					&:before,
+					&:after {
+						background: hsl(var(--bghome), 100%, 92%);
+					}
+				}
+				&:before,
+				&:after {
+					content: "";
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					border-radius: 2px;
+					width: 15px;
+					height: 2px;
+					background: hsl(var(--bghome), 100%, 80%);
+					transition: transform 0.4s ease-in-out;
+					transform: translate(-50%, -50%);
+					opacity: 0;
+				}
+			}
+			&.new {
+				input {
+					background-color: hsl(var(--bghome), 100%, 88%);
+					border-color: hsl(var(--bghome), 100%, 50%);
+				}
+			}
+			&.focused {
+				input {
+					background-color: hsl(var(--bghome), 100%, 95%);
+					border-color: hsl(var(--bghome), 100%, 70%);
+				}
+			}
+			&[data-way="minus"] {
+				color: hsl(10, 100%, 40%);
+				.way {
+					&:before,
+					&:after {
+						opacity: 1;
+					}
+				}
+			}
+			&[data-way="plus"] {
+				color: hsl(150, 100%, 20%);
+				.way {
+					&:before,
+					&:after {
+						opacity: 1;
+					}
+					&:before {
+						transform: translate(-50%, -50%) rotate(90deg);
+					}
+				}
+			}
+		}
+	}
+	.ac {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+
+		&:before {
+			content: attr(data-label);
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			height: 1px;
+			background-color: var(--color);
+			transition: var(--duration) ease-in-out;
+			transition-property: width;
+			transition-delay: var(--td);
+			width: 0;
+		}
+		input {
+			font-weight: 600;
+		}
+	}
+	.current,
+	.networth,
+	.movements-list {
+		&,
+		&:before {
+			opacity: 0;
+			transition: var(--duration) ease-in-out;
+			transition-property: opacity;
+			transition-delay: var(--td);
+		}
+	}
+	&.loaded {
+		.current,
+		.networth,
+		.movements-list {
+			&,
+			&:before {
+				opacity: 1;
+			}
+		}
+		.ac {
+			&:after {
+				width: 100%;
+			}
+		}
+	}
+	input {
+		border: none;
+		outline: none;
+		font-family: inherit;
+		font-size: inherit;
+		color: inherit;
+		padding: 0 0.2em;
+		background-color: transparent;
+		border-bottom: 1px solid transparent;
+
+		&[data-type="currency"] {
+			text-align: right;
+		}
+	}
+	::-webkit-scrollbar {
+		-webkit-appearance: none;
+		width: 5px;
+	}
+	::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background-color: hsla(var(--bghome), 100%, 40%, 0.1);
+		-webkit-box-shadow: 0 0 1px hsla(var(--bghome), 50%, 50%, 0.5);
+	}
+}
